@@ -30,7 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_ads"
                 android:adjustViewBounds="true"
-                android:src="@drawable/img_01"/>
+                android:src="@drawable/img_01"
+                tools:ignore="ContentDescription"/>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -48,7 +49,8 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/height_ads"
-                android:src="@drawable/img_02"/>
+                android:src="@drawable/img_02"
+                tools:ignore="ContentDescription"/>
         </android.support.v7.widget.CardView>
 
 
