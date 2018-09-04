@@ -6,4 +6,8 @@
     <string name="map">Map</string>
     <!--Labels-->
     <!--Error msg-->
+    <!--Business configurations-->
+    <string name="phone">3339567559</string>
+    <string name="location_url">https://goo.gl/maps/UBRnckW9v3Q2</string>
+    <string name="snack_msg_calling">Calling to Mister Tech</string>
 </resources>

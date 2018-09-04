@@ -1,9 +1,16 @@
 package com.pramont.mrtecc.mrtech;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,6 +24,7 @@ import java.util.List;
 
 public class ScrollingActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
+    private static final int REQUEST_PHONE_CALL = 1;
     private boolean mAppBarExpanded = false;
     private Menu mMenu;
     private List<Integer> mMenuItemsIds = new ArrayList<>();
@@ -24,6 +32,7 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestPermissions();
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -32,8 +41,9 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, R.string.snack_msg_calling, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                makeCall(getString(R.string.phone));
             }
         });
 
@@ -111,13 +121,66 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
                 break;
             case R.id.action_call:
                 Toast.makeText(this, "call", Toast.LENGTH_SHORT).show();
+                makeCall(getString(R.string.phone));
                 break;
             case R.id.action_map:
                 Toast.makeText(this, "map", Toast.LENGTH_SHORT).show();
+                getMaps(getString(R.string.location_url));
                 break;
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    /**
+     * Gets the location and send the directions using google maps.
+     *
+     * @param uri String uri from maps.
+     */
+    private void getMaps(String uri) {
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(intent);
+
+    }
+
+
+    /**
+     * To make a call to proper cinema.
+     *
+     * @param phone String phone number.
+     */
+    @SuppressLint("MissingPermission")
+    private void makeCall(String phone) {
+        final String TAG = "Permissions";
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+        try
+        {
+            startActivity(intent);
+        }
+        catch (Exception ex)
+        {
+            requestPermissions();
+            Log.d(TAG, "No permissions granted \n" + ex.getMessage());
+        }
+    }
+
+    /**
+     * To request all the permission once the application starts.
+     */
+    private void requestPermissions() {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            /**
+             * Asking for call permission.
+             */
+            if (ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+            {
+                ActivityCompat.requestPermissions(ScrollingActivity.this,
+                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_PHONE_CALL);
+            }
+        }
     }
 
 }
