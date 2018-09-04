@@ -12,10 +12,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ScrollingActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
-    private Menu collapsedMenu;
-    private boolean appBarExpanded = false;
+    private boolean mAppBarExpanded = false;
+    private Menu mMenu;
+    private List<Integer> mMenuItemsIds = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,16 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
 
         AppBarLayout mAppBarLayout = findViewById(R.id.app_bar);
         mAppBarLayout.addOnOffsetChangedListener(this);
+        getMenuItemsIds();
+    }
+
+    /**
+     * Called to get all the menu item ids to be displayed.
+     */
+    private void getMenuItemsIds() {
+        mMenuItemsIds.add(R.id.action_call);
+        mMenuItemsIds.add(R.id.action_about);
+
     }
 
     /**
@@ -48,34 +62,39 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         //  Vertical offset == 0 indicates appBar is fully  expanded.
+        invalidateOptionsMenu();
         if (Math.abs(verticalOffset) > 200)
         {
-            appBarExpanded = false;
-            invalidateOptionsMenu();
+            mAppBarExpanded = false;
         }
         else
         {
-            appBarExpanded = true;
-            invalidateOptionsMenu();
+            mAppBarExpanded = true;
+
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_scrolling, menu);
-        MenuItem item = menu.findItem(R.id.action_call);
-        MenuItem item2 = menu.findItem(R.id.action_about);
-        if (appBarExpanded)
+        mMenu = menu;
+        if (mAppBarExpanded)
         {
-            item.setVisible(false);
-            item2.setVisible(false);
-        } else {
-            item.setVisible(true);
-            item2.setVisible(true);
+            setOptionsMenuVisible(mMenuItemsIds, false);
         }
-
-        collapsedMenu = menu;
+        else
+        {
+            setOptionsMenuVisible(mMenuItemsIds, true);
+        }
         return true;
+    }
+
+    private void setOptionsMenuVisible(List<Integer> optionsMenu, boolean visible) {
+        for (Integer id : optionsMenu)
+        {
+            MenuItem item = mMenu.findItem(id);
+            item.setVisible(visible);
+        }
     }
 
 
@@ -84,22 +103,15 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about)
+        switch (item.getItemId())
         {
-            Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
-            Log.d(ScrollingActivity.class.getName(), "about");
-            return true;
+            case R.id.action_about:
+                Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_call:
+                Toast.makeText(this, "call", Toast.LENGTH_SHORT).show();
+                break;
         }
-        else if (id == R.id.action_call)
-        {
-            Toast.makeText(this, "call", Toast.LENGTH_SHORT).show();
-            Log.d(ScrollingActivity.class.getName(), "call");
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
