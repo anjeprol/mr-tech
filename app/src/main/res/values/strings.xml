@@ -3,6 +3,7 @@
     <string name="title_activity_scrolling">""</string>
     <string name="action_about">About this app</string>
     <string name="call">call</string>
+    <string name="map">Map</string>
     <!--Labels-->
     <!--Error msg-->
 </resources>

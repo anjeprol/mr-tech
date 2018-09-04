@@ -48,6 +48,7 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
     private void getMenuItemsIds() {
         mMenuItemsIds.add(R.id.action_call);
         mMenuItemsIds.add(R.id.action_about);
+        mMenuItemsIds.add(R.id.action_map);
 
     }
 
@@ -111,6 +112,10 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
             case R.id.action_call:
                 Toast.makeText(this, "call", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.action_map:
+                Toast.makeText(this, "map", Toast.LENGTH_SHORT).show();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

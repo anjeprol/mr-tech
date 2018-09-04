@@ -8,10 +8,15 @@
         android:title="@string/action_about"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/action_map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:orderInCategory="200"
+        android:title="@string/map"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/action_call"
+        android:icon="@android:drawable/ic_menu_call"
         android:orderInCategory="200"
         android:title="@string/call"
-        app:showAsAction="ifRoom"
-        android:icon="@android:drawable/ic_menu_call"/>
-
+        app:showAsAction="ifRoom"/>
 </menu>
