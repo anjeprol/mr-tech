@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_edges">8dp</dimen>
+    <dimen name="margin_ivs">22dp</dimen>
     <dimen name="margin_top">18dp</dimen>
     <dimen name="height_ads">135dp</dimen>
     <dimen name="radiusCorner">30dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="square">60dp</dimen>
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="padding_left_labels">19dp</dimen>
 </resources>

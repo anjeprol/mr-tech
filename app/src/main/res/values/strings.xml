@@ -10,4 +10,6 @@
     <string name="phone">3339567559</string>
     <string name="location_url">https://goo.gl/maps/UBRnckW9v3Q2</string>
     <string name="snack_msg_calling">Calling to Mister Tech</string>
+    <string name="label_ipad_repair">Cotiza para ipads</string>
+    <string name="label_cot_android">Cotiza para android</string>
 </resources>
