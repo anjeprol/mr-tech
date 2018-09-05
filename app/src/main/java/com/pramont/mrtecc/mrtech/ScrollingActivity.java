@@ -19,6 +19,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,7 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
     private Menu mMenu;
     private List<Integer> mMenuItemsIds = new ArrayList<>();
     private View mView;
+    private AdView mAdViewTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +41,16 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         requestPermissions();
         setContentView(R.layout.activity_scrolling);
         mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
         mView = findViewById(R.id.mainCoordinator);
+        mAdViewTop = findViewById(R.id.adViewTop);
+        AppBarLayout mAppBarLayout = findViewById(R.id.app_bar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
+        AdRequest adRequest = new AdRequest.Builder()
+                .setRequestAgent("android_studio:ad_template")
+                .build();
+
+        mAdViewTop.loadAd(adRequest);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,10 +58,33 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
             }
         });
 
-        AppBarLayout mAppBarLayout = findViewById(R.id.app_bar);
+        setSupportActionBar(mToolbar);
         mAppBarLayout.addOnOffsetChangedListener(this);
-
         getMenuItemsIds();
+    }
+
+    @Override
+    public void onPause() {
+        if (mAdViewTop != null) {
+            mAdViewTop.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        if (mAdViewTop != null) {
+            mAdViewTop.resume();
+        }
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mAdViewTop != null) {
+            mAdViewTop.destroy();
+        }
+        super.onDestroy();
     }
 
     /**

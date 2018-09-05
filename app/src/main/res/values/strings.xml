@@ -15,4 +15,8 @@
     <string name="label_cot_ios">Cotiza para iOS</string>
     <string name="lable_cot_laps">Cotiza para Laps</string>
     <string name="label_cot_others">Cotiza otros modelos</string>
+
+
+    <!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-9708372782088183/5892659005</string>
 </resources>
