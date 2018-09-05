@@ -12,11 +12,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -25,7 +27,7 @@ import com.google.android.gms.ads.AdView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrollingActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
+public class ScrollingActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener, View.OnClickListener{
 
     private static final int REQUEST_PHONE_CALL = 1;
     private Toolbar mToolbar;
@@ -43,6 +45,9 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         mToolbar = findViewById(R.id.toolbar);
         mView = findViewById(R.id.mainCoordinator);
         mAdViewTop = findViewById(R.id.adViewTop);
+        Button siteButton = findViewById(R.id.bt_site);
+        CardView cotIpadCV = findViewById(R.id.cv1);
+
         AppBarLayout mAppBarLayout = findViewById(R.id.app_bar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -51,16 +56,28 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
                 .build();
 
         mAdViewTop.loadAd(adRequest);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                makeCall(getString(R.string.phone));
-            }
-        });
 
         setSupportActionBar(mToolbar);
         mAppBarLayout.addOnOffsetChangedListener(this);
+        fab.setOnClickListener(this);
+        siteButton.setOnClickListener(this);
+        cotIpadCV.setOnClickListener(this);
         getMenuItemsIds();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.bt_site:
+                startActivity(new Intent(this,SiteActivity.class));
+                break;
+            case R.id.fab:
+                makeCall(getString(R.string.phone));
+                break;
+            case R.id.cv1:
+                sendAppMsg(view);
+                break;
+        }
     }
 
     @Override
@@ -207,4 +224,11 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         }
     }
 
+    public void sendAppMsg(View view) {
+        Uri uri = Uri.parse("smsto:" + getString(R.string.phone));
+        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+        intent.putExtra(Intent.EXTRA_TEXT, "TEST");
+        intent.setPackage("com.whatsapp");
+        startActivity(intent);
+    }
 }
