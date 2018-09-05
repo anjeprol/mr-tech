@@ -5,7 +5,7 @@
     <dimen name="margin_top">18dp</dimen>
     <dimen name="height_ads">135dp</dimen>
     <dimen name="radiusCorner">30dp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="app_bar_height">200dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="square">60dp</dimen>
