@@ -19,4 +19,5 @@
 
     <!-- AdMob ad unit IDs -->
     <string name="banner_home_footer">ca-app-pub-9708372782088183/5892659005</string>
+    <string name="label_visit_site">Visit site</string>
 </resources>
