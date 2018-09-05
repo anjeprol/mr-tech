@@ -26,7 +26,8 @@
             app:adSize="BANNER"
             app:adUnitId="@string/banner_home_footer"
             app:layout_constraintLeft_toLeftOf="@+id/list_item"
-            tools:layout_editor_absoluteY="50dp"/>
+            tools:layout_editor_absoluteY="50dp"
+            tools:ignore="MissingConstraints"/>
 
         <android.support.v7.widget.CardView
             android:id="@+id/cv1"

@@ -147,11 +147,9 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
                 Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_call:
-                Toast.makeText(this, "call", Toast.LENGTH_SHORT).show();
                 makeCall(getString(R.string.phone));
                 break;
             case R.id.action_map:
-                Toast.makeText(this, "map", Toast.LENGTH_SHORT).show();
                 getMaps(getString(R.string.location_url));
                 break;
 
