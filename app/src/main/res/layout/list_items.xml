@@ -15,7 +15,8 @@
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top">
+        android:layout_marginTop="@dimen/margin_top"
+        android:paddingBottom="100dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/cv1"
@@ -36,10 +37,9 @@
                     android:id="@+id/iv_01"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/height_ads"
-                    android:layout_marginLeft="@dimen/margin_ivs"
+                    android:layout_marginStart="@dimen/margin_ivs"
                     android:adjustViewBounds="true"
                     android:src="@drawable/img_01"
-                    app:layout_anchor="@+id/iv_01"
                     app:layout_constraintLeft_toLeftOf="@+id/cl1"
                     tools:ignore="ContentDescription"/>
 
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginTop="@dimen/square"
-                    android:paddingLeft="@dimen/margin_edges"
+                    android:paddingStart="@dimen/margin_edges"
                     android:text="@string/label_ipad_repair"
                     android:textSize="@dimen/text_size"
                     android:textStyle="italic|bold"
@@ -84,10 +84,9 @@
                     android:id="@+id/iv_02"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/height_ads"
-                    android:layout_marginLeft="@dimen/margin_ivs"
+                    android:layout_marginStart="@dimen/margin_ivs"
                     android:adjustViewBounds="true"
                     android:src="@drawable/img_02"
-                    app:layout_anchor="@+id/iv_02"
                     app:layout_constraintLeft_toLeftOf="@+id/cl1"
                     tools:ignore="ContentDescription"/>
 
@@ -97,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginTop="@dimen/square"
-                    android:paddingLeft="@dimen/margin_edges"
+                    android:paddingStart="@dimen/margin_edges"
                     android:text="@string/label_cot_android"
                     android:textSize="@dimen/text_size"
                     android:textStyle="italic|bold"
@@ -122,16 +121,34 @@
             app:layout_constraintTop_toBottomOf="@id/cv2">
 
             <android.support.design.widget.CoordinatorLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:id="@+id/iv_03"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/height_ads"
-                    android:layout_marginLeft="@dimen/margin_ivs"
+                    android:layout_marginStart="@dimen/margin_ivs"
                     android:adjustViewBounds="true"
                     android:src="@drawable/img_03"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl1"
                     tools:ignore="ContentDescription"/>
+
+                <TextView
+                    android:id="@+id/tv_cot_ios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/square"
+                    android:paddingStart="@dimen/margin_edges"
+                    android:text="@string/label_cot_ios"
+                    android:textSize="@dimen/text_size"
+                    android:textStyle="italic|bold"
+                    app:layout_anchor="@+id/iv_03"
+                    app:layout_anchorGravity="right|center"
+                    app:layout_constraintLeft_toLeftOf="@+id/iv_03"
+
+                    app:layout_constraintTop_toBottomOf="@+id/iv_02"/>
             </android.support.design.widget.CoordinatorLayout>
         </android.support.v7.widget.CardView>
 
@@ -147,11 +164,35 @@
             app:layout_constraintLeft_toLeftOf="@+id/list_item"
             app:layout_constraintTop_toBottomOf="@id/cv3">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_ads"
-                android:layout_marginLeft="@dimen/margin_ivs"
-                android:src="@drawable/img_04"/>
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_ads"
+                    android:layout_marginStart="@dimen/margin_ivs"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/img_04"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl1"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    android:id="@+id/tv_cot_laps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/square"
+                    android:paddingStart="@dimen/margin_edges"
+                    android:text="@string/lable_cot_laps"
+                    android:textSize="@dimen/text_size"
+                    android:textStyle="italic|bold"
+                    app:layout_anchor="@+id/iv_04"
+                    app:layout_anchorGravity="right|center"
+                    app:layout_constraintLeft_toLeftOf="@+id/iv_04"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_04"/>
+            </android.support.design.widget.CoordinatorLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -166,11 +207,35 @@
             app:layout_constraintLeft_toLeftOf="@+id/list_item"
             app:layout_constraintTop_toBottomOf="@id/cv4">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_ads"
-                android:layout_marginLeft="@dimen/margin_ivs"
-                android:src="@drawable/img_06"/>
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_ads"
+                    android:layout_marginStart="@dimen/margin_ivs"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/img_06"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl1"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    android:id="@+id/tv_cot_others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/square"
+                    android:paddingStart="@dimen/margin_edges"
+                    android:text="@string/label_cot_others"
+                    android:textSize="@dimen/text_size"
+                    android:textStyle="italic|bold"
+                    app:layout_anchor="@+id/iv_05"
+                    app:layout_anchorGravity="right|center"
+                    app:layout_constraintLeft_toLeftOf="@+id/iv_05"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_05"/>
+            </android.support.design.widget.CoordinatorLayout>
         </android.support.v7.widget.CardView>
 
     </android.support.constraint.ConstraintLayout>

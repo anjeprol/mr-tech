@@ -12,4 +12,7 @@
     <string name="snack_msg_calling">Calling to Mister Tech</string>
     <string name="label_ipad_repair">Cotiza para ipads</string>
     <string name="label_cot_android">Cotiza para android</string>
+    <string name="label_cot_ios">Cotiza para iOS</string>
+    <string name="lable_cot_laps">Cotiza para Laps</string>
+    <string name="label_cot_others">Cotiza otros modelos</string>
 </resources>
