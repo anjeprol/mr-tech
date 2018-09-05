@@ -25,30 +25,32 @@ import java.util.List;
 public class ScrollingActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
     private static final int REQUEST_PHONE_CALL = 1;
+    private Toolbar mToolbar;
     private boolean mAppBarExpanded = false;
     private Menu mMenu;
     private List<Integer> mMenuItemsIds = new ArrayList<>();
+    private View mView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestPermissions();
         setContentView(R.layout.activity_scrolling);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        mView = findViewById(R.id.mainCoordinator);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, R.string.snack_msg_calling, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 makeCall(getString(R.string.phone));
             }
         });
 
         AppBarLayout mAppBarLayout = findViewById(R.id.app_bar);
         mAppBarLayout.addOnOffsetChangedListener(this);
+
         getMenuItemsIds();
     }
 
@@ -74,15 +76,7 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         //  Vertical offset == 0 indicates appBar is fully  expanded.
         invalidateOptionsMenu();
-        if (Math.abs(verticalOffset) > 200)
-        {
-            mAppBarExpanded = false;
-        }
-        else
-        {
-            mAppBarExpanded = true;
-
-        }
+        mAppBarExpanded = Math.abs(verticalOffset) <= 200;
     }
 
     @Override
@@ -141,7 +135,6 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
     private void getMaps(String uri) {
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
         startActivity(intent);
-
     }
 
 
@@ -156,6 +149,8 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
         try
         {
+            Behaviors.showSnackBar(mView, this, getString(R.string.snack_msg_calling),
+                    Snackbar.LENGTH_LONG, R.color.greenColor);
             startActivity(intent);
         }
         catch (Exception ex)
@@ -171,9 +166,7 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
     private void requestPermissions() {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
-            /**
-             * Asking for call permission.
-             */
+            //Asking for call permissions.
             if (ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
             {
