@@ -2,20 +2,25 @@
     <string name="app_name">"Mister Tech"</string>
     <string name="title_activity_scrolling">""</string>
     <string name="action_about">About this app</string>
-    <string name="call">call</string>
-    <string name="map">Map</string>
+
     <!--Labels-->
-    <!--Error msg-->
-    <!--Business configurations-->
-    <string name="phone">3339567559</string>
-    <string name="location_url">https://goo.gl/maps/UBRnckW9v3Q2</string>
-    <string name="snack_msg_calling">Calling to Mister Tech</string>
-    <string name="label_ipad_repair">Cotiza para ipads</string>
+    <string name="label_cot_ipad">Cotiza para ipads</string>
     <string name="label_cot_android">Cotiza para android</string>
     <string name="label_cot_ios">Cotiza para iOS</string>
-    <string name="lable_cot_laps">Cotiza para Laps</string>
+    <string name="label_cot_laps">Cotiza para Laps</string>
     <string name="label_cot_others">Cotiza otros modelos</string>
 
+    <string name="map">Map</string>
+    <string name="call">Call</string>
+
+    <!--Error msg-->
+
+    <!--Business configurations-->
+    <string name="phone">+5213339567559</string>
+    <string name="location_url">https://goo.gl/maps/UBRnckW9v3Q2</string>
+
+    <!--Messages -->
+    <string name="snack_msg_calling">Calling to Mister Tech</string>
 
     <!-- AdMob ad unit IDs -->
     <string name="banner_home_footer">ca-app-pub-9708372782088183/5892659005</string>

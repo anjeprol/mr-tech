@@ -61,17 +61,17 @@
                     android:id="@+id/tv_cot_ipads"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:layout_gravity="right"
                     android:layout_marginTop="@dimen/square"
                     android:paddingStart="@dimen/margin_edges"
-                    android:text="@string/label_ipad_repair"
+                    android:text="@string/label_cot_laps"
                     android:textSize="@dimen/text_size"
                     android:textStyle="italic|bold"
                     app:layout_anchor="@+id/iv_01"
                     app:layout_anchorGravity="right|center"
+
                     app:layout_constraintLeft_toLeftOf="@+id/iv_01"
-                    app:layout_constraintTop_creator="0"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_01"/>
+                    app:layout_constraintTop_creator="0"/>
 
             </android.support.design.widget.CoordinatorLayout>
 
@@ -198,7 +198,7 @@
                     android:layout_gravity="end"
                     android:layout_marginTop="@dimen/square"
                     android:paddingStart="@dimen/margin_edges"
-                    android:text="@string/lable_cot_laps"
+                    android:text="@string/label_cot_laps"
                     android:textSize="@dimen/text_size"
                     android:textStyle="italic|bold"
                     app:layout_anchor="@+id/iv_04"

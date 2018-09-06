@@ -24,12 +24,14 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrollingActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener, View.OnClickListener{
+public class ScrollingActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener, View.OnClickListener {
 
     private static final int REQUEST_PHONE_CALL = 1;
+    private static final String TAG = ScrollingActivity.class.getName();
     private Toolbar mToolbar;
     private boolean mAppBarExpanded = false;
     private Menu mMenu;
@@ -67,22 +69,24 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        switch (view.getId())
+        {
             case R.id.bt_site:
-                startActivity(new Intent(this,SiteActivity.class));
+                startActivity(new Intent(this, SiteActivity.class));
                 break;
             case R.id.fab:
                 makeCall(getString(R.string.phone));
                 break;
             case R.id.cv1:
-                sendAppMsg(view);
+                sendWhatsapp(view, getString(R.string.label_cot_ipad));
                 break;
         }
     }
 
     @Override
     public void onPause() {
-        if (mAdViewTop != null) {
+        if (mAdViewTop != null)
+        {
             mAdViewTop.pause();
         }
         super.onPause();
@@ -90,7 +94,8 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
 
     @Override
     public void onResume() {
-        if (mAdViewTop != null) {
+        if (mAdViewTop != null)
+        {
             mAdViewTop.resume();
         }
         super.onResume();
@@ -98,7 +103,8 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
 
     @Override
     public void onDestroy() {
-        if (mAdViewTop != null) {
+        if (mAdViewTop != null)
+        {
             mAdViewTop.destroy();
         }
         super.onDestroy();
@@ -193,7 +199,6 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
      */
     @SuppressLint("MissingPermission")
     private void makeCall(String phone) {
-        final String TAG = "Permissions";
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
         try
         {
@@ -224,11 +229,33 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         }
     }
 
-    public void sendAppMsg(View view) {
-        Uri uri = Uri.parse("smsto:" + getString(R.string.phone));
-        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-        intent.putExtra(Intent.EXTRA_TEXT, "TEST");
-        intent.setPackage("com.whatsapp");
-        startActivity(intent);
+    public void sendWhatsapp(View view, String message) {
+        final String URL_BASE = "https://api.whatsapp.com/send?phone=";
+        PackageManager packageManager = getPackageManager();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        StringBuilder dataToRequestPrice = new StringBuilder();
+
+        try
+        {
+            message = URLEncoder.encode(message, "UTF-8");
+            dataToRequestPrice.append(URL_BASE)
+                    .append(getString(R.string.phone))
+                    .append("&text=")
+                    .append(message);
+            intent.setPackage("com.whatsapp");
+            Uri uriData = Uri.parse(dataToRequestPrice.toString());
+            intent.setData(uriData);
+            if (intent.resolveActivity(packageManager) != null)
+            {
+                startActivity(intent);
+            }else {
+                Log.e(TAG,"Whatsapp is not installed");
+            }
+        }
+        catch (Exception e)
+        {
+            Log.d(TAG,e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
