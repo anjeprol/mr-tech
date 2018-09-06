@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">"Mister Tech"</string>
     <string name="title_activity_scrolling">""</string>
-    <string name="action_about">About this app</string>
+    <string name="action_about">Acerca de la aplicación</string>
 
     <!--Labels-->
     <string name="label_cot_ipad">Cotiza para ipads</string>
@@ -15,18 +15,18 @@
 
     <!--Messages-->
     <string name="msg_cot_ipads">Solicitud de cotización para reparación de un ipad,
-        enviado desde la applicacion Mister Tech \n\n modelo: \t  </string>
+        enviado desde la aplicacion Mister Tech \n\n modelo: \t  </string>
 
     <string name="msg_cot_android">Solicitud de cotización para reparación de celular con
-        sistema Android enviado desde la applicacion Mister Tech \n\n Modelo: \t \n  Marca: \t </string>
+        sistema Android enviado desde la aplicacion Mister Tech \n\n Modelo: \t \n  Marca: \t </string>
 
     <string name="msg_cot_ios">Solicitud de cotización para reparación de celular con
-        sistema iOS enviado desde la applicacion Mister Tech \n\n Modelo: \t</string>
+        sistema iOS enviado desde la aplicacion Mister Tech \n\n Modelo: \t</string>
 
     <string name="msg_cot_laps">Solicitud de cotización para reparación de computadora portátil
-    enviado desde la applicacion Mister Tech \n\n Modelo: \t \n Marca: \t \n Año: \t </string>
+    enviado desde la pplicacion Mister Tech \n\n Modelo: \t \n Marca: \t \n Año: \t </string>
 
-    <string name="msg_cot_others">Solicitud de cotización para insumos y otros servicios, enviado desde la applicacion Mister Tech \n\n</string>
+    <string name="msg_cot_others">Solicitud de cotización para insumos y otros servicios, enviado desde la aplicacion Mister Tech \n\n</string>
 
     <!--Error msg-->
 
@@ -35,9 +35,9 @@
     <string name="location_url">https://goo.gl/maps/UBRnckW9v3Q2</string>
 
     <!--Messages -->
-    <string name="snack_msg_calling">Calling to Mister Tech</string>
+    <string name="snack_msg_calling">Llamando a Mister Tech</string>
 
     <!-- AdMob ad unit IDs -->
     <string name="banner_home_footer">ca-app-pub-9708372782088183/5892659005</string>
-    <string name="label_visit_site">Visit site</string>
+    <string name="label_visit_site">Visitar sitio</string>
 </resources>
