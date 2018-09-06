@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -48,22 +49,26 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         mView = findViewById(R.id.mainCoordinator);
         mAdViewTop = findViewById(R.id.adViewTop);
         Button siteButton = findViewById(R.id.bt_site);
-        CardView cotIpadCV = findViewById(R.id.cv1);
-
+        CoordinatorLayout clPriceLaptops = findViewById(R.id.cl1);
+        CoordinatorLayout clPriceAndroid = findViewById(R.id.cl2);
+        CoordinatorLayout clPriceIos = findViewById(R.id.cl3);
+        CoordinatorLayout clPriceIpads = findViewById(R.id.cl4);
+        CoordinatorLayout clPriceOther = findViewById(R.id.cl5);
         AppBarLayout mAppBarLayout = findViewById(R.id.app_bar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         AdRequest adRequest = new AdRequest.Builder()
                 .setRequestAgent("android_studio:ad_template")
                 .build();
-
         mAdViewTop.loadAd(adRequest);
-
         setSupportActionBar(mToolbar);
         mAppBarLayout.addOnOffsetChangedListener(this);
         fab.setOnClickListener(this);
         siteButton.setOnClickListener(this);
-        cotIpadCV.setOnClickListener(this);
+        clPriceLaptops.setOnClickListener(this);
+        clPriceAndroid.setOnClickListener(this);
+        clPriceIos.setOnClickListener(this);
+        clPriceIpads.setOnClickListener(this);
+        clPriceOther.setOnClickListener(this);
         getMenuItemsIds();
     }
 
@@ -77,8 +82,20 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
             case R.id.fab:
                 makeCall(getString(R.string.phone));
                 break;
-            case R.id.cv1:
-                sendWhatsapp(view, getString(R.string.label_cot_ipad));
+            case R.id.cl1:
+                sendWhatsapp(getString(R.string.msg_cot_ipads));
+                break;
+            case R.id.cl2:
+                sendWhatsapp(getString(R.string.msg_cot_android));
+                break;
+            case R.id.cl3:
+                sendWhatsapp(getString(R.string.msg_cot_ios));
+                break;
+            case R.id.cl4:
+                sendWhatsapp(getString(R.string.msg_cot_laps));
+                break;
+            case R.id.cl5:
+                sendWhatsapp(getString(R.string.msg_cot_others));
                 break;
         }
     }
@@ -229,7 +246,7 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         }
     }
 
-    public void sendWhatsapp(View view, String message) {
+    public void sendWhatsapp(String message) {
         final String URL_BASE = "https://api.whatsapp.com/send?phone=";
         PackageManager packageManager = getPackageManager();
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -248,13 +265,15 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
             if (intent.resolveActivity(packageManager) != null)
             {
                 startActivity(intent);
-            }else {
-                Log.e(TAG,"Whatsapp is not installed");
+            }
+            else
+            {
+                Log.e(TAG, "Whatsapp is not installed");
             }
         }
         catch (Exception e)
         {
-            Log.d(TAG,e.getMessage());
+            Log.d(TAG, e.getMessage());
             e.printStackTrace();
         }
     }

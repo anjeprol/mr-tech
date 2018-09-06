@@ -13,6 +13,21 @@
     <string name="map">Map</string>
     <string name="call">Call</string>
 
+    <!--Messages-->
+    <string name="msg_cot_ipads">Solicitud de cotización para reparación de un ipad,
+        enviado desde la applicacion Mister Tech \n\n modelo: \t  </string>
+
+    <string name="msg_cot_android">Solicitud de cotización para reparación de celular con
+        sistema Android enviado desde la applicacion Mister Tech \n\n Modelo: \t \n  Marca: \t </string>
+
+    <string name="msg_cot_ios">Solicitud de cotización para reparación de celular con
+        sistema iOS enviado desde la applicacion Mister Tech \n\n Modelo: \t</string>
+
+    <string name="msg_cot_laps">Solicitud de cotización para reparación de computadora portátil
+    enviado desde la applicacion Mister Tech \n\n Modelo: \t \n Marca: \t \n Año: \t </string>
+
+    <string name="msg_cot_others">Solicitud de cotización para insumos y otros servicios, enviado desde la applicacion Mister Tech \n\n</string>
+
     <!--Error msg-->
 
     <!--Business configurations-->

@@ -64,7 +64,7 @@
                     android:layout_gravity="right"
                     android:layout_marginTop="@dimen/square"
                     android:paddingStart="@dimen/margin_edges"
-                    android:text="@string/label_cot_laps"
+                    android:text="@string/label_cot_ipad"
                     android:textSize="@dimen/text_size"
                     android:textStyle="italic|bold"
                     app:layout_anchor="@+id/iv_01"
@@ -90,6 +90,7 @@
             app:layout_constraintTop_toBottomOf="@id/cv1">
 
             <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/cl2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -134,6 +135,7 @@
             app:layout_constraintTop_toBottomOf="@id/cv2">
 
             <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/cl3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -178,6 +180,7 @@
             app:layout_constraintTop_toBottomOf="@id/cv3">
 
             <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/cl4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -221,6 +224,7 @@
             app:layout_constraintTop_toBottomOf="@id/cv4">
 
             <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/cl5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
