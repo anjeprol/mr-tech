@@ -43,7 +43,7 @@
         android:layout_marginEnd="@dimen/margin_edges"
         android:layout_marginStart="@dimen/margin_edges"
         android:layout_marginTop="@dimen/margin_top"
-        android:text="App. Versión 1.0.0"
+        android:hint="Version app example"
         android:textAlignment="center"
         android:textStyle="bold|italic"
         app:layout_constraintLeft_creator="1"

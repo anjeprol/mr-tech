@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 import com.google.android.gms.ads.AdRequest;
@@ -286,9 +287,13 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View promptsView = layoutInflater.inflate(R.layout.alert_about, null);
 
+        String versionName = BuildConfig.VERSION_NAME;
+        TextView versionTv = promptsView.findViewById(R.id.tv_version);
+        versionTv.setText("App Version: "+ versionName);
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-        // set prompts.xml to alertdialog builder
+        // set prompts.xml to alert dialog builder
         alertDialogBuilder.setView(promptsView);
 
         // set dialog message
@@ -303,7 +308,8 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
                                         .append(getString(R.string.email_pramont))
                                         .append("?subject=")
                                         .append(Uri.decode(getString(R.string.subject)))
-                                        .append("&body=");
+                                        .append("&body=")
+                                        .append(getString(R.string.body));
 
                                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                                 emailIntent.setData(Uri.parse(mailto.toString()));

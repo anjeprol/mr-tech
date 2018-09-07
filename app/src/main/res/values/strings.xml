@@ -42,6 +42,15 @@
     <string name="msg_question_contact">¿ Deseas contactarnos ?</string>
     <string name="email_pramont">antoniopradoo@gmail.com</string>
     <string name="subject">Agendar cita con pramont</string>
+    <string name="body">\n
+        Nombre completo:\t\n
+        Nombre de la empresa:\t\n
+        Telefono:\t\n
+        Giro de la empresa:\t\n
+        Ciudad:\t\n
+        Medio de contacto preferible (skype, correo, telefono):\t\n
+        Skype id:\t\n
+    </string>
 
     <!--Error msg-->
 
