@@ -2,6 +2,8 @@ package com.pramont.mrtecc.mrtech;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -12,15 +14,16 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.Toast;
+
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -184,7 +187,7 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
         switch (item.getItemId())
         {
             case R.id.action_about:
-                Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
+                alertAbout();
                 break;
             case R.id.action_call:
                 makeCall(getString(R.string.phone));
@@ -276,5 +279,51 @@ public class ScrollingActivity extends AppCompatActivity implements AppBarLayout
             Log.d(TAG, e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private void alertAbout() {
+        // get prompts.xml view
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptsView = layoutInflater.inflate(R.layout.alert_about, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.lb_ok),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //Action to ok
+                                StringBuilder mailto = new StringBuilder();
+                                mailto.append("mailto:")
+                                        .append(getString(R.string.email_pramont))
+                                        .append("?subject=")
+                                        .append(Uri.decode(getString(R.string.subject)))
+                                        .append("&body=");
+
+                                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                                emailIntent.setData(Uri.parse(mailto.toString()));
+
+                                try {
+                                    startActivity(emailIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Log.e(TAG,e.getMessage());
+                                }
+                            }
+                        })
+                .setNegativeButton(getString(R.string.lb_cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //Actions to no
+                            }
+                        });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        alertDialog.show();
     }
 }
